@@ -1,0 +1,4 @@
+com\luxsong\springcloud\service\DeptClientService.class
+com\luxsong\springcloud\service\impl\DeptClientServiceFallbackFactory.class
+com\luxsong\springcloud\service\impl\DeptClientServiceFallbackFactory$1.class
+com\luxsong\springcloud\entity\Dept.class
