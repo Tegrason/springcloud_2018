@@ -3,13 +3,17 @@ package com.luxsong.springcloud.controller;
 import com.luxsong.springcloud.entity.Dept;
 import com.luxsong.springcloud.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.swing.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/")
 public class DeptController {
     @Autowired
     private DeptService service;
@@ -49,5 +53,14 @@ public class DeptController {
                     + element.getUri());
         }
         return this.client;
+    }
+    @RequestMapping(value = "/session/get", method = RequestMethod.GET)
+    @ResponseBody
+    public String getSession(HttpServletRequest request){
+        Object object = request.getSession().getAttribute("object");
+        if( null == object){
+            request.getSession().setAttribute("object","哈哈");
+        }
+        return  "sessionId"+request.getSession().getId()+"-----";
     }
 }

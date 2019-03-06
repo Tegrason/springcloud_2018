@@ -1,5 +1,6 @@
 server:
   port: 8001
+  session-timeout: 60
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
   type-aliases-package: com.luxsong.springcloud.entity
@@ -19,7 +20,19 @@ spring:
       min-idle: 5                                           # 数据库连接池的最小维持连接数
       initial-size: 5                                       # 初始化连接数
       max-total: 5                                          # 最大连接数
-      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+      max-wait-millis: 200
+   session:
+     store-type: none
+   pool:
+     max-active: 8
+     max-wait: -1
+     max-idle: 8
+     min-idle: 0
+   redis:
+     host: 192.168.1.105
+     port: 6379
+     timeout: 500
+     database: 0
 
 eureka:
   client: #客户端注册进eureka服务列表内
